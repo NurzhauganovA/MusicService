@@ -1,0 +1,407 @@
+{% extends 'main/base.html' %}
+{% load music_tags %}
+
+{% block title %}{{ music.name_of_song }} - Music{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="lyrics_block_container">
+        <div class="lyrics_preview_main_info">
+            <div class="exit_icon_lyrics_preview">
+                <i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x-lg lyric_exit_icon" viewBox="0 0 16 16">\
+                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                    </svg>
+                </i>
+            </div>
+            <p>
+            {% load lyric_tags %}
+                {% with music.text_of_song|split:"*" as lyrics %}
+                    {% for lyric in lyrics %}
+                        {{ lyric }}<br>
+                    {% endfor %}
+                {% endwith %}
+            </p>
+        </div>
+    </div>
+    <div class="section-browse">
+        <div class="section_account_block">
+            <a href="">
+                <button>
+                    <i>
+                        <svg height="11" viewBox="0 0 10 11" width="10" xmlns="http://www.w3.org/2000/svg" fill="#000" fill-rule="nonzero" aria-hidden="true" class="web-navigation__auth-button-icon icon-button__icon icon-button__icon--before">
+                            <g>
+                                <path d="M5 5.29495614c-1.29585799 0-2.38466244-1.17598684-2.38466244-2.67763158-.0058701-1.46546052 1.10063877-2.61732456 2.38466244-2.61732456 1.28994083 0 2.39053254 1.12774123 2.39053254 2.61129386 0 1.50767544-1.09467455 2.68366228-2.39053254 2.68366228zM1.31360947 11c-.97633136 0-1.31360947-.3015351-1.31360947-.8563596 0-1.5498904 1.92899408-3.68475882 5-3.68475882 3.06508876 0 5 2.13486842 5 3.68475882 0 .5548245-.33727811.8563596-1.31360947.8563596z"></path>
+                            </g>
+                        </svg>
+                    </i>
+                    <span>
+                        {{ user.username }}
+                    </span>
+                </button>
+            </a>
+        </div>
+
+        <div class="container-block-main">
+            <div class="main-header-info">
+                <div class="bg-image-header-info" style="background-image: url('{{ music.cover_image.url }}')"></div>
+                <div class="title-header-info">
+                    <h1>{{ music.name_of_song }}</h1>
+                    <p>{{ music.author_name }}</p>
+                    <span>
+                        {% for genre in music.genre.all %}
+                            {{ genre.name_of_genre }}
+                        {% endfor %}
+                        • {{ music.release_date.year }}</span>
+                    <div class="preview-title-header-info">
+                        <div class="main-preview-info artist_music_play_btn">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </i>
+                            <h2>Preview</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="music-container-main-block">
+                {% for music in music_list %}
+                    <div class="music-container audio-tracks">
+                        <div class="main-info-music-container">
+                            <i class="music_play play_single">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                            </i>
+                            <h1>{{ music.name_of_song }}</h1>
+                        </div>
+                        <div class="simple-width-music-container"></div>
+                        <div class="support-info-music-container">
+                            <h1>{{ music.time_length | time_formatter }}</h1>
+                            <a href="{{ music.music_file.url }}">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#FFF" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="footer artist_detail_footer">
+            <div class="footer_music_play">
+                <div class="footer_music_play_open_window">
+                    <div class="music_img image_footer_open_window" style="background-image: url('/media/music_images/Allan-Walker-OnMyWay-cover.jpg')"></div>
+                    <div class="footer_opened_window_music_play">
+                        <div class="footer_opened_window_main_info_music">
+                            <h1 class="song-title">
+                                Anvarbek
+                            </h1>
+                            <p class="artist">
+                                Anvarbek
+                            </p>
+                        </div>
+                        <div class="footer_opender_window_script_music">
+                            <i class="playing opened_window_play_pause_music">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-play-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                                </svg>
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_music_play_open_icon">
+                    <i class="footer_music_play_icon" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#7a33d8" class="bi bi-caret-down-fill open_footer_window_icon" viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                        </svg>
+                    </i>
+                </div>
+                <div class="currentDuration text-purple-900">
+                    0:00
+                </div>
+                <div class="progress_container bg-purple-600">
+                    <div class="relative h-1 bg-purple-700">
+                        <div class="absolute h-full w-2 progress bg-green-500 flex items-center justify-end">
+                            <div class="rounded-full w-3 h-3 bg-white shadow"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Duration text-purple-900" id="Duration">
+                    0:00
+                </div>
+                <div class="music_volume_setting">
+                    <div class="lyrics-preview-music">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-text-fill lyrics_music" viewBox="0 0 16 16">
+                                <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+                            </svg>
+                        </i>
+                    </div>
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
+                            <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12V4zm3.025 4a4.486 4.486 0 0 1-1.318 3.182L10 10.475A3.489 3.489 0 0 0 11.025 8 3.49 3.49 0 0 0 10 5.525l.707-.707A4.486 4.486 0 0 1 12.025 8z"/>
+                        </svg>
+                    </i>
+                    <input type="range" min="0" max="100" value="99" class="volume_slider" onchange="setVolume()">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                            <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                            <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                            <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                        </svg>
+                    </i>
+                </div>
+            </div>
+             <audio preload="metadata" autoplay="false" class="audio-player" >
+                {% for audio in music_list %}
+                    <source src="{{ audio.music_file.url }}">
+                {% endfor %}
+            </audio>
+        </div>
+
+    </div>
+</section>
+
+    <script>
+
+        let lyrics_music = document.querySelector('.lyrics_music');
+        let lyrics_block = document.querySelector('.lyrics_block_container');
+        let block = document.querySelector('.lyrics_preview_main_info');
+        let section_window = document.querySelector('.section-browse');
+        let lyric_exit_icon = document.querySelector('.lyric_exit_icon');
+
+        lyrics_music.addEventListener('click', () => {
+            section_window.style.opacity = '0.2';
+            section_window.style.position = 'fixed';
+            lyrics_block.style.display = 'flex';
+            block.style.display = 'block';
+        })
+
+        lyric_exit_icon.addEventListener('click', () => {
+            section_window.style.opacity = '1.0';
+            section_window.style.position = 'relative';
+            lyrics_block.style.display = 'none';
+            block.style.display = 'none';
+        })
+
+
+
+
+
+        const open_window_icon = document.querySelector('.open_footer_window_icon');
+        const opened_window = document.querySelector('.footer_music_play_open_window');
+        let test = true;
+
+        open_window_icon.addEventListener('click', () => {
+            if(test) {
+                test = false;
+                opened_window.style.display = 'block';
+                open_window_icon.style.transform = 'rotate(270deg)';
+            }
+            else {
+                test = true;
+                opened_window.style.display = 'none';
+                open_window_icon.style.transform = 'rotate(90deg)';
+            }
+        })
+
+
+
+        const music_play_btn = document.querySelector('.music_play');
+        const play_btn_up_header = document.querySelector('.artist_music_play_btn');
+        const player = document.querySelector('.audio-player');
+        const play = document.querySelector('.playing');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        let duration = document.querySelector('.Duration');
+        const currentTime = document.querySelector('.currentDuration');
+        const progress = document.querySelector('.progress');
+        const progress_container = document.querySelector('.progress_container');
+        const audio_tracks = document.querySelector('.audio-tracks');
+        const song_title = document.querySelector('.song-title');
+        const artist = document.querySelector('.artist');
+        const music_img = document.querySelector('.music_img');
+        let volume_slider = document.querySelector('.volume_slider');
+
+        let musicIndex = 0;
+        let a = 1;
+
+        const musics = [
+                {% for musics in music_list %}
+                    {
+                        img: '{{ musics.cover_image.url }}',
+                        name: '{{ musics.name_of_song }}',
+                        artist: '{{ musics.author_name }}',
+                        music: '{{ musics.music_file.url }}'
+                    },
+                {% endfor %}
+        ];
+
+        const setSRC = () => {
+            player.src = `${musics[musicIndex].music}`
+            song_title.textContent = musics[musicIndex].name
+            artist.textContent = musics[musicIndex].artist;
+            music_img.style.backgroundImage = "url(" + musics[musicIndex].img + ")";
+        }
+
+        console.log(musics)
+
+        const playOrpause = () => {
+            if(player.paused) {
+                player.play();
+                play.innerHTML = '<i><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-pause-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/></svg></i>';
+                music_block.style.marginTop = '-16px';
+            }
+            else {
+                player.pause();
+                play.innerHTML = '<i><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-play-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/></svg></i>'
+            }
+        }
+
+        play_btn_up_header.addEventListener('click', () => {
+            opened_window.style.display = 'block';
+            open_window_icon.style.transform = 'rotate(270deg)'
+            playOrpause();
+        })
+
+        music_play_btn.addEventListener('click', () => {
+            opened_window.style.display = 'block';
+            open_window_icon.style.transform = 'rotate(270deg)'
+            playOrpause();
+        })
+
+        const formatTime = (secs) => {
+            let min = Math.floor((secs % 3600) / 60)
+            let sec = Math.floor(secs % 60)
+
+            if (sec < 10) {
+                sec = `0${sec}`
+            }
+            return `${min}:${sec}`
+        }
+
+        // load music on refresh
+        setSRC();
+        player.pause();
+
+        // when play is clicked
+        play.addEventListener(`click`, () => {
+            playOrpause();
+        })
+
+        // load duration of music for UI
+        player.addEventListener('loadedmetadata', () => {
+            duration.textContent = formatTime(player.duration)
+        })
+
+        // update progress bar
+        player.addEventListener('timeupdate', () => {
+            let secs = player.currentTime;
+            let total = player.duration;
+
+            currentTime.textContent = formatTime(player.currentTime);
+
+            let progress_container_width = progress_container.offsetWidth;
+            let progress_width = progress.offsetWidth;
+            let audio_played = (secs / total) * 100;
+            let newWidth = progress_container_width * (audio_played / 100);
+            progress.style.width = `${newWidth}px`;
+
+            if(player.currentTime === player.duration) {
+                musicIndex = musicIndex + 1;
+                if (musicIndex === musics.length) {
+                    setSRC();
+                    player.pause();
+                }
+                if (musicIndex > musics.length - 1) {
+                    musicIndex = 0;
+                }
+                setSRC();
+                player.play();
+            }
+        })
+
+        // update progress bar on click
+        progress_container.addEventListener('click', (e) => {
+            const click_percentage = (e.offsetX / progress_container.offsetWidth) * 100;
+            const audio_played = (click_percentage / 100) * player.duration;
+            let playing;
+            if (player.paused) {
+                playing = false;
+            }
+            else {
+                playing = true;
+            }
+            player.currentTime = audio_played;
+
+            if (playing === false) {
+                player.pause();
+            }
+        })
+
+        audio_tracks.addEventListener('click', e => {
+            if ((e.target.nodeName == 'BUTTON' && e.target.classList.contains('play_single')) || (e.target.nodeName == 'svg' && e.target.classList.contains('play_svg'))) {
+                let parent_cont;
+
+                if (e.target.nodeName == 'BUTTON') {
+                    parent_cont = e.target.parentNode;
+                }
+                else {
+                    parent_cont = e.target.parentNode.parentNode;
+                }
+
+                const newIndex = Array.from(audio_tracks.querySelectorAll('li')).indexOf(parent_cont);
+
+                if (newIndex == musicIndex) {
+                    if(player.paused) {
+                        player.play()
+                        opened_window.style.display = 'block';
+                        open_window_icon.style.transform = 'rotate(270deg)'
+                        play.innerHTML = '<i><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-pause-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/></svg></i>'
+                        music_block.style.marginTop = '-16px';
+                    }
+                    else {
+                        player.pause()
+                        play.innerHTML = '<i><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/></svg></i>'
+                    }
+                }
+                else {
+                    musicIndex = newIndex;
+                    setSRC();
+                    player.play();
+                    opened_window.style.display = 'block';
+                    open_window_icon.style.transform = 'rotate(270deg)'
+
+                    play.innerHTML = '<i><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#7a33d8" class="bi bi-pause-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.25 5C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5zm3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5z"/></svg></i>'
+                }
+            }
+        })
+
+        function setVolume() {
+            player.volume = volume_slider.value / 100;
+        }
+
+        likeIcon.addEventListener('click', () => {
+            let test = true;
+            if(test) {
+                test = false;
+                favouriteAlbums.isFavourite = true;
+                likeIcon.innerHTML = '<i class="main_info_like_icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-heart-fill" fill="#000" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></i>';
+            }
+            else {
+                test = true;
+                favouriteAlbums.isFavourite = false;
+                likeIcon.innerHTML = '<i class="main_info_like_icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-heart-fill" fill="#7a33d8" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></i>';
+            }
+
+
+        })
+
+        console.log(`${musics[musicIndex].music}`)
+    </script>
+
+{% endblock %}

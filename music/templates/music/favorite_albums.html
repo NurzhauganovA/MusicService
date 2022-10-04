@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Favorite Albums{% endblock %}
+
+{% block content %}
+
+    <section>
+        <div class="section-browse">
+            <div class="section_account_block">
+                <a href="">
+                    <button>
+                        <i>
+                            <svg height="11" viewBox="0 0 10 11" width="10" xmlns="http://www.w3.org/2000/svg" fill="#000" fill-rule="nonzero" aria-hidden="true" class="web-navigation__auth-button-icon icon-button__icon icon-button__icon--before">
+                                <g>
+                                    <path d="M5 5.29495614c-1.29585799 0-2.38466244-1.17598684-2.38466244-2.67763158-.0058701-1.46546052 1.10063877-2.61732456 2.38466244-2.61732456 1.28994083 0 2.39053254 1.12774123 2.39053254 2.61129386 0 1.50767544-1.09467455 2.68366228-2.39053254 2.68366228zM1.31360947 11c-.97633136 0-1.31360947-.3015351-1.31360947-.8563596 0-1.5498904 1.92899408-3.68475882 5-3.68475882 3.06508876 0 5 2.13486842 5 3.68475882 0 .5548245-.33727811.8563596-1.31360947.8563596z"></path>
+                                </g>
+                            </svg>
+                        </i>
+                        <span>
+                            {{ user.username }}
+                        </span>
+                    </button>
+                </a>
+            </div>
+
+            <div class="container-block-main">
+                <div class="main-header-info">
+                    <div class="bg-image-header-info" style="background-image: url('/media/music_images/like.png')"></div>
+                    <div class="title-header-info">
+                        <h1>My Favorite Albums</h1>
+                        <p>{{ user.username }} • {{ like_albums.count }}
+                            {% if like_albums.count > 1 %}
+                                albums
+                            {% else %}
+                                album
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <div class="music-container-main-block">
+                    <ul class="text-xs sm:text-base divide-y border-t cursor-default audio-tracks scroll_block_music">
+                        <div class="section_albums_container">
+                            {% for album in like_albums %}
+                                <div class="album_block">
+                                    <div class="albums_container_block">
+                                        <div class="albums_container_image_cover">
+                                            <div class="fav_albums_container_image">
+                                                <a href="{% url 'detail_album' album.id %}"><img src="{{ album.img.url }}"></a>
+                                            </div>
+                                        </div>
+                                        <h2>{{ album.name_of_album }}</h2>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

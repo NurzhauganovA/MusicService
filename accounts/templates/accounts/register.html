@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<title>SDU</title>
+
+		<!-- CSS only -->
+		<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=1519.2px">
+
+	</head>
+	<body>
+
+		<div class="main">
+
+			<section class="signup">
+				<div class="container">
+					<div class="signup-content">
+						<div class="signup-form">
+							<h2 class="form-title">Sign up</h2>
+							<form method="POST" class="register-form" id="register-form">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="name"><i class="bi bi-person-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg></i></label>
+									<input type="text" name="username" id="name" placeholder="Your Name" required>
+								</div>
+								<div class="form-group">
+									<label for="email"><i class="bi bi-envelope-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+  										<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+									</svg></i></label>
+									<input type="email" name="email" id="email" placeholder="Your Email" required>
+								</div>
+								<div class="form-group">
+									<label for="pass"><i class="bi bi-lock-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+  										<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+									</svg></i></label>
+									<input type="password" name="password1" id="pass" placeholder="Password" required>
+								</div>
+								<div class="form-group">
+									<label ><i class="bi bi-lock"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+  										<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+									</svg></i></label>
+									<input type="password" name="password2" id="re_pass" placeholder="Repeat your password" required>
+								</div>
+								<div class="form-group">
+									<input type="checkbox" name="agree-term" id="agree-term" class="agree-term">
+									<label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+								</div>
+								<div class="form-group form-button">
+									<input type="submit" name="signup" id="signup" class="form-submit" value="Register">
+
+								</div>
+								<div class="signin-link">
+									Already registered?
+									<a href="/accounts/login" class="signin-link">LOG IN</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+
+	</body>
+
+</html>

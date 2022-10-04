@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Create Music {% endblock %}
+
+{% block content %}
+    <section style="margin-top: -32px;">
+        <div class="section-browse">
+            <h2 class="text-center text-black text-2xl font-bold mt-8 mb-10" style="padding-top: 50px;">Add a new Song</h2>
+            <form action="" method="post" class="w-10/12 md:w-1/2 mx-auto mb-8" enctype="multipart/form-data" style="padding: 0 0 100px 0">
+                {% csrf_token %}
+                {{ form.name_of_song }}<br>
+                <label> Genre of song: </label>
+                {{ form.genre }}<br>
+                <label> Select music file(.mp3): </label>
+                {{ form.music_file }}<br>
+                <label> Select music cover image: </label>
+                {{ form.cover_image }}<br>
+                <label> Lyric of song: </label>
+                {{ form.text_of_song }}<br>
+                <p style="color: #000;">{{ error }}</p>
+                <button class="p-2 text-white text-center btn btn-success w-full flex items-center justify-center" style="margin-top: 20px;">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <style>
+        label {
+            color: #000;
+            padding: 30px 0 10px 0;
+
+        }
+
+        form input {
+
+        }
+    </style>
+{%endblock content%}

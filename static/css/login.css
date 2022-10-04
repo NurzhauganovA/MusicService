@@ -1,0 +1,125 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+
+body{
+	font-size: 13px;
+	line-height: 1.8;
+	color: #222;
+	background: #000;
+	font-weight: 400;
+	font-family: Poppins;
+}
+.main{
+	font-size: 15px;
+	line-height: 1.8;
+	color: #222;
+	background: #000;
+	font-weight: 400;
+	font-family: Poppins, sans-serif;
+}
+section{
+	display: block;
+	margin-top: 120px;
+}
+
+
+.container{
+
+	width: 500px;
+	background: #fff;
+	margin: 0 auto;
+	box-shadow: 0 15px 16.83px 0.17px rgb(0 0 0 / 5%);
+	border-radius: 20px;
+}
+
+.signup-content{
+	padding: 75px 0;
+}
+
+.signup-form {
+    margin-left: 75px;
+    margin-right: 75px;
+    padding-left: 34px;
+   
+    overflow: hidden;
+}
+
+.form-title {
+    margin-bottom: 33px;
+}
+
+h2 {
+    line-height: 1.66;
+    margin: 0;
+    padding: 0;
+    color: #4B0082;
+    font-family: Poppins,sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+}
+
+register-form {
+    width: 100%;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+.form-group{
+	position: relative;
+	margin-bottom: 25px;
+	overflow: hidden;
+
+}
+
+label{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #222;
+	cursor: default;
+
+}
+
+
+input {
+    
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    font-family: Poppins;
+    box-sizing: border-box;
+    outline: none;
+}
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+.form-submit {
+    display: inline-block;
+    background: #4B0082;
+    color: #fff;
+    border-bottom: none;
+    width: auto;
+    padding: 15px 39px;
+    border-radius: 10px;
+    margin-top: 25px;
+    cursor: pointer;
+    font-family: Poppins,sans-serif;
+    font-weight: 800;
+   	font-size: 16px;
+}
+
+i {
+    font-style: italic;
+    color: black;
+}   
+.signin-link{
+	color: #222;
+}
+

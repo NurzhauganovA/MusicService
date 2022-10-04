@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block title %} All Artists {% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="section-browse">
+        <div class="all_genres_container_block">
+            <h1>ALL ARTISTS</h1>
+            <div class="genre_container_all_genres">
+                {% for artists in all_artists %}
+                    <a href="{% url 'detail_artist' artists.id %}">
+                        <div class="genre_block_all_genres">
+                            <p>{{ artists.artist_name }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

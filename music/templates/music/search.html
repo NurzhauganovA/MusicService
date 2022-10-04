@@ -1,0 +1,139 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Search...{% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="section-browse">
+        <div class="section_container_search_system">
+            <div class="nav_search_form_block">
+                <form method="get">
+                    <i class="nav_search_icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </i>
+                    <input type="search" name="search" placeholder="Search..." autocomplete="off" class="nav_search_input">
+                    <h6 class="nav_search_login">{{ user.username }}</h6>
+                    <div class="profile_open_block">
+                        <a href="{% url 'register_artist' %}"><p>To be artist</p></a>
+                        <span><a href="{% url 'logout' %}"> Logout </a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="search_container_main_block">
+            <div class="header-search">
+                <div class="song_side">
+                    <div class="content">
+                        <h1>Ethereal Music</h1>
+                        <p>
+                            Listen to high quality music with us. Improve the world of
+                            <br>
+                            music and create music together with our authors.</p>
+                    </div>
+                    <div class="genres">
+                        <div class="h4">
+                            <h1>Genres</h1>
+                            <div class="btn">
+                                <span>
+                                    <a href="{% url 'all_genres' %}">
+                                        View all
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="main_genres">
+                            {% for genres in all_genres %}
+                                <div class="genre_1">
+                                    <h4>{{ genres.name_of_genre }}</h4>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                        <div class="artists">
+                            <div class="h4">
+                                <h1>Artists</h1>
+                                <div class="btn">
+                                    <span>
+                                        <a href="{% url 'all_artists' %}">
+                                            View all
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="main_artists">
+                                {% for artists in all_artists %}
+                                    <a href="{% url 'detail_artist' artists.id %}">
+                                        <div class="artist_1">
+                                            <div class="bg_image_artist" style="background-image: url('{{ artists.artist_img.url }}')"></div>
+                                            <h4 class="bg_font_artist">{{ artists.artist_name }}</h4>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script>
+        const opened_window = document.querySelector('.profile_open_block');
+        const click_btn = document.querySelector('.nav_search_login');
+        let test = true;
+
+        click_btn.addEventListener('click', () => {
+            if(test) {
+                test = false;
+                opened_window.style.display = 'flex';
+            }
+            else {
+                test = true;
+                opened_window.style.display = 'none';
+            }
+        })
+
+
+        const genres = [
+            {% for genre in all_genres %}
+            {
+                name: '{{ genre }}'
+            },
+            {% endfor %}
+        ]
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("main_genres");
+
+            if(n > slides.length) {
+                slideIndex = 1;
+            }
+            else if(n < 1) {
+                slideIndex = slides.length;
+            }
+            for(i = 0; i < slides.length; i++ ) {
+                slides[i].style.display = 'none';
+            }
+            slides[slideIndex - 1].style.display = 'flex';
+        }
+
+        console.log(genres);
+
+    </script>
+
+{% endblock %}

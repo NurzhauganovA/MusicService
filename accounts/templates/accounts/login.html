@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	<head>
+		<title>SDU</title>
+
+		<!-- CSS only -->
+		<link rel="stylesheet" href="{% static 'css/login.css' %}">
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=1519.2px">
+
+	</head>
+	<body>
+
+		<div class="main">
+
+			<section class="signup">
+				<div class="container">
+					<div class="signup-content">
+						<div class="signup-form">
+							<h2 class="form-title">Sign in</h2>
+							<form method="POST" class="register-form" id="register-form">
+								{% csrf_token %}
+								<div class="form-group">
+									<label for="name"><i class="bi bi-person-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg></i></label>
+									<input type="text" name="username" id="name" placeholder="Your Name" required>
+								</div>
+								<div class="form-group">
+									<label for="pass"><i class="bi bi-lock-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+  										<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+									</svg></i></label>
+									<input type="password" name="password" id="pass" placeholder="Password" required>
+								</div>
+								{% for message in messages %}
+									<p style="color: red;">{{ message }}</p>
+								{% endfor %}
+								<div class="form-group form-button">
+									<input type="submit" name="signup" id="signup" class="form-submit" value="Sign in">
+									
+								</div>
+
+								<div class="signin-link">
+									Don't have an account?
+									<a href="/accounts/register" class="signin-link">SIGN UP</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+		
+	</body>
+
+</html>

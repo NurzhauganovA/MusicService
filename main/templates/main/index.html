@@ -1,0 +1,56 @@
+{% extends 'main/base.html' %}
+
+    {% block title %} Tri pacana {% endblock %}
+
+
+{% block content %}
+    <section>
+        <div class="section" id="section">
+            <div class="section_container_block">
+                <div class="section_account_block">
+                    <a href="/">
+                        <button>
+                            <i>
+                                <svg height="11" viewBox="0 0 10 11" width="10" xmlns="http://www.w3.org/2000/svg" fill="#000" fill-rule="nonzero" aria-hidden="true" class="web-navigation__auth-button-icon icon-button__icon icon-button__icon--before">
+                                    <g>
+                                        <path d="M5 5.29495614c-1.29585799 0-2.38466244-1.17598684-2.38466244-2.67763158-.0058701-1.46546052 1.10063877-2.61732456 2.38466244-2.61732456 1.28994083 0 2.39053254 1.12774123 2.39053254 2.61129386 0 1.50767544-1.09467455 2.68366228-2.39053254 2.68366228zM1.31360947 11c-.97633136 0-1.31360947-.3015351-1.31360947-.8563596 0-1.5498904 1.92899408-3.68475882 5-3.68475882 3.06508876 0 5 2.13486842 5 3.68475882 0 .5548245-.33727811.8563596-1.31360947.8563596z"></path>
+                                    </g>
+                                </svg>
+                            </i>
+                            <span>
+                                {{ user.username }}
+                            </span>
+                        </button>
+                    </a>
+                </div>
+                <div class="section_discover_apple_music_block">
+
+                    <div class="title_section_discover_apple_music_block">
+                        <h1>Discover new music every day.</h1>
+                    </div>
+                    <div class="full_text_section_discover_apple_music_block">
+                        <p>Get playlists and albums inspired by the artists and genres you’re listening to. 1 month free, then $ 9,99/month.</p>
+                    </div>
+                    <div class="subscribe_button_section_discover_apple_music_block">
+                        <a href=""><button>Try It Free</button></a>
+                    </div>
+                    <div class="learn_more_section_discover_apple_music_block">
+                        <a href="#">
+                            <span>
+                                Learn More
+                            </span>
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#FFF" width="16" height="16" x="0" y="0" version="1.1" viewBox="0 0 800 2444" xml:space="preserve">
+                                    <path d="M100.1 1860.5l153.83 134 504.35-578.99L253.91 836.5l-153.83 134 387.65 445.01z"></path>
+                                </svg>
+                            </i>
+                        </a>
+                    </div>
+                    <div class="image_section_discover_apple_music_block">
+                        <img src="//static/main/img/large.webp" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
